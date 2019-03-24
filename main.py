@@ -13,8 +13,8 @@ if __name__ == "__main__":
     if len(chaine) == 1:
         print("Please enter a valid equation 6!")
         exit()
-    grand_degree = sys.argv[1].split("^")
-    i = 0
+    #grand_degree = sys.argv[1].split("^")
+    #i = 0
     #while i < len(grand_degree):
     #    if 'X' in grand_degree[i]:
     #        i += 1

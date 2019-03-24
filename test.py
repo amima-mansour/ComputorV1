@@ -4,13 +4,13 @@ import re
 
 def premier_test(chaine):
     # Cette fonction d'effectuer un premier test de l'equation recue.
-    #r"^( )?(([0-9]+)( \* X\^0)?( - | \+ )?)?(([0-9]+)( \* X\^1| \* X)( - | \+ )?)?( )?$?(([0-9]+)( \* X\^2))"
-    motif_1 = r"^( )?(([0-9]+)( \* X\^0)?( - | \+ )?)?(([0-9]+)( \* X\^1| \* X)( - | \+ )?)?(([0-9]+)( \* X\^2))?( )?"
+ 
+    motif_1 = r"^( )?(-)?([0-9]+)(\.[0-9]+)?( \* X\^0)?(( - | \+ )([0-9]+)(\.[0-9]+)?(( \* X\^[1-9]([0-9]*))| \* X))*( )?$"
     for element in chaine:
         if re.match(motif_1, element):
             continue
         else:
-            print("Please enter a valid equation 1 !")
+            print("Please enter a valid equation !")
             exit()
 
 def tests_elementaires(chaine):
