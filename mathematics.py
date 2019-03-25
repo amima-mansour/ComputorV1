@@ -17,14 +17,17 @@ def identifier_coefficients(liste):
     for i, element in enumerate(liste):
         if 'X' in element:
             b = 1
-            if i - 3 >= 0 and liste[i - 3] == '-':
-                b = -1
+            nbr = '1'
+            if i - 2 >= 0 and re.match(r"(-)?[0-9]+(\.[0-9]+)?", liste[i - 2]) and liste[i - 1] == '*':
+                nbr = liste[i - 2]
+                if i - 3 >= 0 and liste[i - 3] == '-':
+                    b = -1
             if element == 'X':
                 element = 'X^1'
             if element in coeff.keys():
-                coeff[element] += b * convertir_en_nombre(liste[i - 2])   
+                coeff[element] += b * convertir_en_nombre(nbr)   
             else:
-                coeff[element] = b * convertir_en_nombre(liste[i - 2])
+                coeff[element] = b * convertir_en_nombre(nbr)
         elif re.match(r"(-)?[0-9]+(\.[0-9]+)?", element):
             if i + 1 == len(liste) or liste[i + 1] != '*':
                 b = 1
@@ -50,15 +53,14 @@ def reduced_string(coeff_final):
             return  -1, str(coeff_final["X^0"])+ " = 0"
     while len(coeff_final) > 0:
         degree = "X^"+ str(i)
-        #while degree not in coeff_final.keys():
-        #    i += 1
-        #    degree = "X^"+ str(i)
         if degree not in coeff_final.keys():
             coeff_final[degree] = 0
         if coeff_final[degree] >= 0:
             chaine += " + " + str(coeff_final[degree]) + " * "+ degree
         else:
-            d = -1 * coeff_final[degree]
+            d = coeff_final[degree]
+            if degree != "X^0":
+                d = -1 * coeff_final[degree]
             chaine += " - " + str(d) + " * "+ degree
         del coeff_final[degree]
         i += 1

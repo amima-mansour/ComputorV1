@@ -22,6 +22,7 @@ class Equation:
 
     def degree(self):
         """ Méthode qui affiche le degrée de l'equation."""
+        
         if self.d == -1:
             print("Polynomial degree: 0")
         else:
@@ -51,15 +52,3 @@ class Equation:
             else:
                 a = self.coeff['X^2']
                 math.solutions(a, b, c)
-
-
-
-
-
-
-
-    
-
-
-
-

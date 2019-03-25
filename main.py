@@ -13,16 +13,6 @@ if __name__ == "__main__":
     if len(chaine) == 1:
         print("Please enter a valid equation 6!")
         exit()
-    #grand_degree = sys.argv[1].split("^")
-    #i = 0
-    #while i < len(grand_degree):
-    #    if 'X' in grand_degree[i]:
-    #        i += 1
-    #        d = int(grand_degree[i].split()[0])
-    #        if d > 2:
-    #            print("Polynomial degree: {}".format(d))
-    #            print("The polynomial degree is stricly greater than 2, I can't solve.")
-    #            exit()
     test.premier_test(chaine)
     test.second_test(chaine)
 
